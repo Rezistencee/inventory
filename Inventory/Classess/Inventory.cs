@@ -4,12 +4,11 @@ namespace Inventory.Classess
 {
     public class Inventory
     {
-        private List<Item> _items;
+        private List<Sword> _items;
 
         public Inventory()
         {
-            
-            _items = new List<Item>();
+            _items = new List<Sword>();
         }
     }
 }

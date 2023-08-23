@@ -42,8 +42,9 @@
     <ItemGroup>
         <Compile Include="Classess\Inventory.cs" />
         <Compile Include="Classess\InventoryManager.cs" />
-        <Compile Include="Classess\Item.cs" />
+        <Compile Include="Classess\Sword.cs" />
         <Compile Include="Interfaces\IItem.cs" />
+        <Compile Include="Interfaces\IRangedWeapon.cs" />
         <Compile Include="Interfaces\IRepository.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
