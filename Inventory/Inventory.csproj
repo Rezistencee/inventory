@@ -40,6 +40,7 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Classess\HealingPotion.cs" />
         <Compile Include="Classess\Inventory.cs" />
         <Compile Include="Classess\InventoryManager.cs" />
         <Compile Include="Classess\Sword.cs" />

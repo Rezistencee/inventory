@@ -1,11 +1,12 @@
+using Inventory.Interfaces;
+
 namespace Inventory.Classess
 {
-    public class InventoryManager
+    public static class InventoryManager
     {
-        
-        public InventoryManager()
+        public static void AddItemToInventory(Inventory currentInventory, IItem item)
         {
-            
+            currentInventory.AddItem(item);
         }
     }
 }
