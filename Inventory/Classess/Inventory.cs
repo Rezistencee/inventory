@@ -7,9 +7,17 @@ namespace Inventory.Classess
     public class Inventory
     {
         private List<IItem> _items;
-        private float _maxWeight;
+        private readonly float _maxWeight;
         private float _currentWeight;
 
+        public float MaxWeight
+        {
+            get
+            {
+                return _maxWeight;
+            }
+        }
+        
         public float Weight
         {
             get
@@ -27,13 +35,16 @@ namespace Inventory.Classess
 
         public void AddItem(IItem item)
         {
-            if(_currentWeight + item.Weight <= _maxWeight) {
-                _items.Add(item);
-                _currentWeight += item.Weight;
-            }
-            else
+            _items.Add(item);
+            _currentWeight += item.Weight;
+        }
+
+        public void RemoveItem(IItem item)
+        {
+            if (_items.Contains(item))
             {
-                Console.WriteLine("Unable to put item in inventory, maximum weight reached");
+                _items.Remove(item);
+                _currentWeight -= item.Weight;
             }
         }
 

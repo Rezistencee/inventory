@@ -50,6 +50,12 @@ namespace Inventory
             Console.WriteLine("Ranged weapon count is {0}", rangedWeaponCount);
             
             Console.WriteLine("Current inventory weight: {0:F1}", playerInventory.Weight);
+
+            InventoryManager.RemoveItemFromInventory(playerInventory, crossbow);
+            
+            Console.WriteLine("Current inventory weight: {0:F1}", playerInventory.Weight);
+
+            Console.ReadKey();
         }
     }
 }
