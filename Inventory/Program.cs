@@ -49,7 +49,7 @@ namespace Inventory
             
             Console.WriteLine("Ranged weapon count is {0}", rangedWeaponCount);
             
-            Console.WriteLine("Current inventory weight: {0}", playerInventory.Weight);
+            Console.WriteLine("Current inventory weight: {0:F1}", playerInventory.Weight);
         }
     }
 }

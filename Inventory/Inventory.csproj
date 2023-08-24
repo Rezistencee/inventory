@@ -45,6 +45,7 @@
         <Compile Include="Classess\Inventory.cs" />
         <Compile Include="Classess\InventoryManager.cs" />
         <Compile Include="Classess\Sword.cs" />
+        <Compile Include="Interfaces\IConsumables.cs" />
         <Compile Include="Interfaces\IItem.cs" />
         <Compile Include="Interfaces\IRangedWeapon.cs" />
         <Compile Include="Interfaces\IRepository.cs" />
