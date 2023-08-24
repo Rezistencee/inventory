@@ -4,6 +4,6 @@ namespace Inventory.Interfaces
     {
         int Range { get; set; }
 
-        void Fire();
+        void Fire(int distance);
     }
 }
