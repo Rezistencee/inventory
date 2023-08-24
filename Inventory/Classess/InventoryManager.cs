@@ -27,11 +27,11 @@ namespace Inventory.Classess
         }
         
         //TODO: Try to refactoring this method.
-        public static void SearchItemInInventory(Inventory targetInventory, IItem searchItem)
+        public static void SearchItemInInventory(Inventory targetInventory, Func<IItem, bool> searchPredicate)
         {
             foreach (IItem item in targetInventory.GetInventory())
             {
-                if (item == searchItem)
+                if (searchPredicate(item))
                 {
                     Console.WriteLine("Item found in inventory.");
                     return;

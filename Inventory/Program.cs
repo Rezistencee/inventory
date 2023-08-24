@@ -54,7 +54,19 @@ namespace Inventory
             InventoryManager.RemoveItemFromInventory(playerInventory, crossbow);
             
             Console.WriteLine("Current inventory weight: {0:F1}", playerInventory.Weight);
-
+            
+            InventoryManager.SearchItemInInventory(playerInventory, item => item.Name == "Elf Crossbow");
+            
+            InventoryManager.AddItemToInventory(playerInventory, crossbow);
+            
+            InventoryManager.SearchItemInInventory(playerInventory, item => item.Name == "Elf Crossbow");
+            InventoryManager.SearchItemInInventory(playerInventory, item => (item.Name == "Elf Crossbow" && item.Weight > 3.0f));
+            
+            Crossbow crossbow_2 = new Crossbow("Emperror Crossbow", "Something desc...", 4.2f, 21);
+            crossbow_2.Damage = 24;
+            
+            InventoryManager.SearchItemInInventory(playerInventory, item => item == crossbow_2);
+            
             Console.ReadKey();
         }
     }

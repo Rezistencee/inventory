@@ -25,6 +25,8 @@ namespace Inventory.Classess
                 return _currentWeight;
             }
         }
+        
+        public event Action<IItem> ItemAdded;
 
         public Inventory()
         {
@@ -37,6 +39,7 @@ namespace Inventory.Classess
         {
             _items.Add(item);
             _currentWeight += item.Weight;
+            OnItemAdded(item);
         }
 
         public void RemoveItem(IItem item)
@@ -51,6 +54,11 @@ namespace Inventory.Classess
         public IEnumerable<IItem> GetInventory()
         {
             return _items;
+        }
+        
+        protected virtual void OnItemAdded(IItem item)
+        {
+            ItemAdded?.Invoke(item);
         }
     }
 }
