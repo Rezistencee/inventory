@@ -1,5 +1,6 @@
 ﻿using System;
 using Inventory.Classess;
+using Inventory.Enums;
 using Inventory.Interfaces;
 
 namespace Inventory
@@ -14,7 +15,7 @@ namespace Inventory
 
             for (int item = 1; item <= 10; item++)
             {
-                Sword factoryItem = new Sword(String.Format("Sword #{0}", item), "Something desc..", 1.5f);
+                Sword factoryItem = new Sword(String.Format("Sword #{0}", item), "Something desc..", 1.5f, 12, Rarity.Epic);
                 
                 factoryItem.Weight = (float)(rand.Next(50, 100) / 10.0);
                 factoryItem.Damage = rand.Next(1, 10);
@@ -29,13 +30,13 @@ namespace Inventory
 
             InventoryManager.AddItemToInventory(playerInventory, healingPotion);
 
-            Crossbow crossbow = new Crossbow("Elf Crossbow", "Something desc...", 3.45f, 15);
+            Crossbow crossbow = new Crossbow("Elf Crossbow", "Something desc...", 3.45f, 15, Rarity.Epic);
             crossbow.Damage = 21;
             
             InventoryManager.AddItemToInventory(playerInventory, crossbow);
             
             var inventory = playerInventory.GetInventory();
-
+            
             foreach (var item in inventory)
             {
                 if (item is IRangedWeapon rangedWeapon)
@@ -62,7 +63,7 @@ namespace Inventory
             InventoryManager.SearchItemInInventory(playerInventory, item => item.Name == "Elf Crossbow");
             InventoryManager.SearchItemInInventory(playerInventory, item => (item.Name == "Elf Crossbow" && item.Weight > 3.0f));
             
-            Crossbow crossbow_2 = new Crossbow("Emperror Crossbow", "Something desc...", 4.2f, 21);
+            Crossbow crossbow_2 = new Crossbow("Emperror Crossbow", "Something desc...", 4.2f, 21, Rarity.Legendary);
             crossbow_2.Damage = 24;
             
             InventoryManager.SearchItemInInventory(playerInventory, item => item == crossbow_2);

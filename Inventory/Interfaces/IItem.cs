@@ -1,3 +1,5 @@
+using Inventory.Enums;
+
 namespace Inventory.Interfaces
 {
     public interface IItem
@@ -5,6 +7,7 @@ namespace Inventory.Interfaces
         string Name { get; set; }
         string Description { get; set; }
         float Weight { get; set; }
+        Rarity Rarity { get; set;  }
 
         void Use();
     }

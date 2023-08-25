@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Inventory.Enums;
 using Inventory.Interfaces;
 
 namespace Inventory.Classess
@@ -9,6 +10,7 @@ namespace Inventory.Classess
         public string Name { get; set; }
         public string Description { get; set; }
         public float Weight { get; set; }
+        public Rarity Rarity { get; set; }
         public int RegenerationValue { get; set; }
         public int StackableLimit { get; set; }
         public int Quantity { get; set; }
@@ -18,6 +20,7 @@ namespace Inventory.Classess
             Name = String.Empty;
             Description = String.Empty;
             Weight = 0.0f;
+            Rarity = Rarity.Common;
             RegenerationValue = 0;
             StackableLimit = 3;
             Quantity = 0;
@@ -28,6 +31,7 @@ namespace Inventory.Classess
             Name = name;
             Description = description;
             Weight = weight;
+            Rarity = Rarity.Common;
             RegenerationValue = 0;
             StackableLimit = 3;
             Quantity = 1;
@@ -38,6 +42,7 @@ namespace Inventory.Classess
             Name = name;
             Description = description;
             Weight = weight;
+            Rarity = Rarity.Common;
             RegenerationValue = regenerationValue;
             StackableLimit = 3;
             Quantity = 1;

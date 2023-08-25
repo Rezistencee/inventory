@@ -1,4 +1,5 @@
 using System;
+using Inventory.Enums;
 using Inventory.Interfaces;
 
 namespace Inventory.Classess
@@ -8,6 +9,7 @@ namespace Inventory.Classess
         public string Name { get; set; }
         public string Description { get; set; }
         public float Weight { get; set; }
+        public Rarity Rarity { get; set; }
         public int Damage { get; set; }
         public int Range { get; set; }
 
@@ -16,6 +18,7 @@ namespace Inventory.Classess
             Name = String.Empty;
             Description = String.Empty;
             Weight = 0.0f;
+            Rarity = Rarity.Common;
             Range = 0;
             Damage = 0;
         }
@@ -25,6 +28,7 @@ namespace Inventory.Classess
             Name = name;
             Description = description;
             Weight = weight;
+            Rarity = Rarity.Common;
             Range = range;
             Damage = 0;
         }
@@ -34,8 +38,19 @@ namespace Inventory.Classess
             Name = name;
             Description = description;
             Weight = weight;
+            Rarity = Rarity.Common;
             Damage = 0;
             Range = 0;
+        }
+        
+        public Crossbow(string name, string description, float weight, int range, Rarity rarity)
+        {
+            Name = name;
+            Description = description;
+            Weight = weight;
+            Rarity = rarity;
+            Damage = 0;
+            Range = range;
         }
         
         public void Use()
