@@ -5,14 +5,14 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{F84CD586-61B6-483B-BB90-1BD39CBBCAFE}</ProjectGuid>
-        <OutputType>Exe</OutputType>
+        <ProjectGuid>{609361B3-C783-45DA-9BA3-81F213DBFC60}</ProjectGuid>
+        <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Inventory</RootNamespace>
-        <AssemblyName>Inventory</AssemblyName>
+        <RootNamespace>Inventory.Tests</RootNamespace>
+        <AssemblyName>Inventory.Tests</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
-        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,23 +38,19 @@
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
         <Reference Include="System.Xml"/>
+        <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb">
+            <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Classess\Crossbow.cs" />
-        <Compile Include="Classess\HealingPotion.cs" />
-        <Compile Include="Classess\Inventory.cs" />
-        <Compile Include="Classess\InventoryManager.cs" />
-        <Compile Include="Classess\InventorySlot.cs" />
-        <Compile Include="Classess\Sword.cs" />
-        <Compile Include="Converters\RarityConverter.cs" />
-        <Compile Include="Enums\ArrowTypes.cs" />
-        <Compile Include="Enums\Rarity.cs" />
-        <Compile Include="Interfaces\IConsumables.cs" />
-        <Compile Include="Interfaces\IItem.cs" />
-        <Compile Include="Interfaces\IRangedWeapon.cs" />
-        <Compile Include="Interfaces\IRepository.cs" />
-        <Compile Include="Program.cs"/>
+        <Compile Include="RarityConverterTest.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Inventory\Inventory.csproj">
+        <Project>{f84cd586-61b6-483b-bb90-1bd39cbbcafe}</Project>
+        <Name>Inventory</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
 using System;
+using Inventory.Converters;
 using Inventory.Enums;
 using Inventory.Interfaces;
 
@@ -46,6 +47,16 @@ namespace Inventory.Classess
             Damage = damage;
             Rarity = rarity;
         }
+        
+        public Sword(string name, string description, float weight, int damage, int rarityValue)
+        {
+            Name = name;
+            Description = description;
+            Weight = weight;
+            Damage = damage;
+            Rarity = RarityConverter.Convert(rarityValue);
+        }
+
         
         public void Use()
         {
