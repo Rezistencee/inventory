@@ -63,7 +63,7 @@ namespace Inventory
             InventoryManager.SearchItemInInventory(playerInventory, item => item.Name == "Elf Crossbow");
             InventoryManager.SearchItemInInventory(playerInventory, item => (item.Name == "Elf Crossbow" && item.Weight > 3.0f));
             
-            Crossbow crossbow_2 = new Crossbow("Emperror Crossbow", "Something desc...", 4.2f, 21, Rarity.Legendary);
+            Crossbow crossbow_2 = new Crossbow("Emperror Crossbow", "Something desc...", 4.2f, 21, 3);
             crossbow_2.Damage = 24;
             
             InventoryManager.SearchItemInInventory(playerInventory, item => item == crossbow_2);

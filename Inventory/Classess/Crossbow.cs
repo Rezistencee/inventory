@@ -1,4 +1,5 @@
 using System;
+using Inventory.Converters;
 using Inventory.Enums;
 using Inventory.Interfaces;
 
@@ -49,6 +50,16 @@ namespace Inventory.Classess
             Description = description;
             Weight = weight;
             Rarity = rarity;
+            Damage = 0;
+            Range = range;
+        }
+        
+        public Crossbow(string name, string description, float weight, int range, int rarityValue)
+        {
+            Name = name;
+            Description = description;
+            Weight = weight;
+            Rarity = RarityConverter.Convert(rarityValue);
             Damage = 0;
             Range = range;
         }
