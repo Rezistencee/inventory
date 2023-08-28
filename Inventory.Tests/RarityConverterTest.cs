@@ -27,5 +27,14 @@ namespace Inventory.Tests
             
             Assert.AreEqual(expected, actual);
         }
+        
+        [Test]
+        public void ConvertToRarity_StringValue_ConvertsSuccessfully()
+        {
+            string value = "Epic";
+            Rarity result = RarityConverter.ConvertToRarity(value);
+
+            Assert.AreEqual(Rarity.Epic, result);
+        }
     }
 }

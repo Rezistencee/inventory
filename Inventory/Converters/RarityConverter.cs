@@ -19,5 +19,20 @@ namespace Inventory.Converters
 
             throw new ArgumentException("Invalid value for Rarity enum");
         }
+        
+        public static Rarity ConvertToRarity(string inputValue)
+        {
+            if (inputValue == null)
+            {
+                throw new ArgumentNullException(nameof(inputValue));
+            }
+            
+            if (Enum.TryParse(inputValue, out Rarity rarity))
+            {
+                return rarity;
+            }
+
+            throw new ArgumentException("Invalid value for Rarity enum");
+        }
     }
 }

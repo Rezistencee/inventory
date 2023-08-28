@@ -8,13 +8,21 @@ namespace Inventory.Classess
         private static int _id = 1;
         private IItem _item;
         private int _quantity;
-        private int _stackableLimit;
+        private readonly int _stackableLimit;
 
         public IItem Item
         {
             get
             {
                 return _item;
+            }
+        }
+
+        public int ID
+        {
+            get
+            {
+                return _id;
             }
         }
 
@@ -36,6 +44,32 @@ namespace Inventory.Classess
                 _stackableLimit = consumablesItem.StackableLimit;
             else
                 _stackableLimit = 1;
+        }
+
+        public bool IsSearchItem(IItem searchItem)
+        {
+            return (searchItem == _item) ? true : false;
+        }
+
+        public bool AddItemToSlot(IItem item)
+        {
+            if (item != _item)
+                return false;
+
+            if (item is IConsumables consumablesItem)
+            {
+                if (_quantity < _stackableLimit)
+                {
+                    _quantity = _quantity + 1;
+                    return true;
+                }
+            }
+            else
+            {
+                _item = item;
+            }
+
+            return true;
         }
     }
 }
