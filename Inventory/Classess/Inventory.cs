@@ -7,6 +7,7 @@ namespace Inventory.Classess
     public class Inventory
     {
         private List<IItem> _items;
+        private List<InventorySlot> _slots;
         private readonly float _maxWeight;
         private float _currentWeight;
 
@@ -31,6 +32,7 @@ namespace Inventory.Classess
         public Inventory()
         {
             _items = new List<IItem>();
+            _slots = new List<InventorySlot>(12);
             _maxWeight = 100.0f;
             _currentWeight = 0.0f;
         }
@@ -40,6 +42,27 @@ namespace Inventory.Classess
             _items.Add(item);
             _currentWeight += item.Weight;
             OnItemAdded(item);
+        }
+        
+        public void SlotAddItem(IItem item)
+        {
+            foreach (InventorySlot inventorySlot in _slots)
+            {
+                if (inventorySlot.Item == item)
+                {
+                    if (inventorySlot.CanStackable)
+                    {
+                        inventorySlot.AddStackableItem(item);
+                        _currentWeight += item.Weight;
+                        return;
+                    }
+                }
+            }
+
+            InventorySlot tempSlot = new InventorySlot(item);
+            
+            _slots.Add(tempSlot); 
+            _currentWeight += item.Weight;
         }
 
         public void RemoveItem(IItem item)
@@ -54,6 +77,11 @@ namespace Inventory.Classess
         public IEnumerable<IItem> GetInventory()
         {
             return _items;
+        }
+
+        public IEnumerable<InventorySlot> GetInventorySlots()
+        {
+            return _slots;
         }
         
         protected virtual void OnItemAdded(IItem item)

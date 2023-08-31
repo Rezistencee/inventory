@@ -68,6 +68,26 @@ namespace Inventory
             
             InventoryManager.SearchItemInInventory(playerInventory, item => item == crossbow_2);
             
+            Console.WriteLine("Inventory slots testing:");
+
+            Classess.Inventory inventoryWithSlots = new Classess.Inventory();
+            
+            InventoryManager.AddItemToInventory(inventoryWithSlots, crossbow);
+            InventoryManager.AddItemToInventory(inventoryWithSlots, crossbow_2);
+            InventoryManager.AddItemToInventory(inventoryWithSlots, healingPotion);
+            InventoryManager.AddItemToInventory(inventoryWithSlots, healingPotion);
+            InventoryManager.AddItemToInventory(inventoryWithSlots, healingPotion);
+            InventoryManager.AddItemToInventory(inventoryWithSlots, healingPotion);
+            
+            Console.WriteLine(inventoryWithSlots.Weight);
+            
+            foreach (var slot in inventoryWithSlots.GetInventorySlots())
+            {
+                Console.WriteLine("Item {0} with {1} quantity", slot.Item.Name, slot.Quantity);
+            }
+            
+            InventoryManager.SearchItemInInventory(inventoryWithSlots, item => item == crossbow_2);
+            
             Console.ReadKey();
         }
     }
