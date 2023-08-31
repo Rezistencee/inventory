@@ -1,3 +1,4 @@
+using System;
 using Inventory.Interfaces;
 
 namespace Inventory.Classess
@@ -26,12 +27,40 @@ namespace Inventory.Classess
             }
         }
 
+        public int Quantity
+        {
+            get
+            {
+                return _quantity;
+            }
+        }
+
+        public bool CanStackable
+        {
+            get
+            {
+                return (_quantity < _stackableLimit) ? true : false;
+            }
+        }
+
         public InventorySlot()
         {
             _item = null;
             _quantity = 0;
             _id = _id + 1;
             _stackableLimit = 1;
+        }
+        
+        public InventorySlot(IItem item)
+        {
+            _item = item;
+            _quantity = 1;
+            _id = _id + 1;
+
+            if (item is IConsumables consumablesItem)
+                _stackableLimit = consumablesItem.StackableLimit;
+            else
+                _stackableLimit = 1;
         }
         
         public InventorySlot(IItem item, int quantity)
@@ -46,30 +75,12 @@ namespace Inventory.Classess
                 _stackableLimit = 1;
         }
 
-        public bool IsSearchItem(IItem searchItem)
+        public void AddStackableItem(IItem item)
         {
-            return (searchItem == _item) ? true : false;
-        }
-
-        public bool AddItemToSlot(IItem item)
-        {
-            if (item != _item)
-                return false;
-
-            if (item is IConsumables consumablesItem)
-            {
-                if (_quantity < _stackableLimit)
-                {
-                    _quantity = _quantity + 1;
-                    return true;
-                }
-            }
+            if (CanStackable)
+                _quantity++;
             else
-            {
-                _item = item;
-            }
-
-            return true;
+                throw new IndexOutOfRangeException();
         }
     }
 }
