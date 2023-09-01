@@ -1,5 +1,6 @@
 ﻿using System;
 using Inventory.Classess;
+using Inventory.Deserializers;
 using Inventory.Enums;
 using Inventory.Interfaces;
 
@@ -87,6 +88,10 @@ namespace Inventory
             }
             
             InventoryManager.SearchItemInInventory(inventoryWithSlots, item => item == crossbow_2);
+            
+            Console.WriteLine("Json deserializer test:");
+            
+            JsonDeserializer<Crossbow>.DeserializeAndPrintCrossbows();
             
             Console.ReadKey();
         }

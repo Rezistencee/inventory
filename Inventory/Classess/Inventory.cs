@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Inventory.Interfaces;
 
 namespace Inventory.Classess
@@ -42,6 +43,11 @@ namespace Inventory.Classess
             _items.Add(item);
             _currentWeight += item.Weight;
             OnItemAdded(item);
+        }
+        
+        private InventorySlot FindStackableSlot(IItem item)
+        {
+            return _slots.FirstOrDefault(slot => slot.CanStackable);
         }
         
         public void SlotAddItem(IItem item)
