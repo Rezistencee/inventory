@@ -19,7 +19,9 @@ namespace Inventory.Classess
         
         public static void AddItemToInventory(Inventory currentInventory, IItem item)
         {
-            if(currentInventory.Weight + item.Weight <= currentInventory.MaxWeight) {
+            float totalWeightAfterAdding = currentInventory.Weight + item.Weight;
+            
+            if(totalWeightAfterAdding <= currentInventory.MaxWeight) {
                 currentInventory.SlotAddItem(item);
             }
             else

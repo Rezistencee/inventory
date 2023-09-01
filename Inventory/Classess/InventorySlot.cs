@@ -35,13 +35,7 @@ namespace Inventory.Classess
             }
         }
 
-        public bool CanStackable
-        {
-            get
-            {
-                return (_quantity < _stackableLimit) ? true : false;
-            }
-        }
+        public bool CanStackable => _quantity < _stackableLimit;
 
         public InventorySlot()
         {
@@ -77,10 +71,12 @@ namespace Inventory.Classess
 
         public void AddStackableItem(IItem item)
         {
-            if (CanStackable)
-                _quantity++;
-            else
+            if (!CanStackable)
+            {
                 throw new IndexOutOfRangeException();
+            }
+
+            _quantity++;
         }
     }
 }

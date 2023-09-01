@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Inventory.Classess;
+using Inventory.Deserializers;
 using Inventory.Enums;
 using Inventory.Interfaces;
 
@@ -87,6 +89,36 @@ namespace Inventory
             }
             
             InventoryManager.SearchItemInInventory(inventoryWithSlots, item => item == crossbow_2);
+            
+            Console.WriteLine("Json deserializer test:");
+            
+            JsonDeserializer<Crossbow>.DeserializeAndPrintCrossbows();
+            
+            Console.WriteLine("XML deserializer test:");
+            Crossbow[] crossbows = XmlDeserializer<Crossbow>.DeserializeAll(Path.Combine(Directory.GetCurrentDirectory(), "items/crossbows"));
+            HealingPotion[] healingPotions = XmlDeserializer<HealingPotion>.DeserializeAll(Path.Combine(Directory.GetCurrentDirectory(), "items/potions"));
+            
+            foreach (var item in crossbows)
+            {
+                Console.WriteLine($"Name: {item.Name}");
+                Console.WriteLine($"Description: {item.Description}");
+                Console.WriteLine($"Weight: {item.Weight}");
+                Console.WriteLine($"Rarity: {item.Rarity}");
+                Console.WriteLine($"Damage: {item.Damage}");
+                Console.WriteLine($"Range: {item.Range}");
+                Console.WriteLine();
+            }
+            
+            foreach (var item in healingPotions)
+            {
+                Console.WriteLine($"Name: {item.Name}");
+                Console.WriteLine($"Description: {item.Description}");
+                Console.WriteLine($"Weight: {item.Weight}");
+                Console.WriteLine($"Rarity: {item.Rarity}");
+                Console.WriteLine($"Regeneration value: {item.RegenerationValue}");
+                Console.WriteLine($"Stackable limit: {item.StackableLimit}");
+                Console.WriteLine();
+            }
             
             Console.ReadKey();
         }
